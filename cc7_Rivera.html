@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>One Time Password </title>
+        <style>
+        	body {background: lightblue; 
+            	text-align: center;
+            	font-family: arial;
+                color: navy;
+            }
+            button {padding: 10px; background:violet }
+            a {font-size: 0.5em; color: maroon}
+        </style>
+
+	</head>
+	<body onload="generator()">
+	<h1> Final Verification Step </h1>
+	<h2> Current OTP: <span id="otp"> _ _ _ _ _ _ </span> <a onclick="generator()" href=""> New OTP </a></h2>
+    <button onclick="verification()"> Enter the OTP as shown above </button>
+	
+    
+	<script>
+        function generator(){
+        var OTPS = Math.floor(Math.random()* 900000)+ 100000;
+        document.getElementById("otp").innerHTML = OTPS;
+        }
+
+        function verification() {
+            var UOTP = prompt("Please Enter the given OTP: ");
+            console.log(document.getElementById("otp").textContent);
+
+            if (UOTP == document.getElementById("otp").textContent){
+                window.open("https://www.youtube.com");
+            } else {
+                alert("Wrong OTP, Please try again");
+                generator();
+            }
+        }
+
+    </script>
+</body>
+</html>

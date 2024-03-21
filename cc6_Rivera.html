@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Coding Challenge 6
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-color: lightseagreen;
+            }
+           
+        </style>
+    </head>
+    <body>
+        <h1> Quadratic Formula </h1>
+
+        <button onclick="solve()">Find the root</button>
+
+        <h4 id="result"></h4>
+
+        <script>
+            let disc, crim
+
+            function solve(){
+                var a = prompt("Enter a number: ");
+                var b = prompt("Enter a number: ");
+                var c = prompt("Enter a number: ");
+
+                discriminant = b * b - 4 * a * c;
+
+                if (discriminant > 0 ) {
+                disc = (- b + Math.sqrt(discriminant))/(2 * a);
+                crim = (- b - Math.sqrt(discriminant))/(2 * a);
+                    alert (" The X1 and X2 of the Quadratic Equations are " + disc + " and " + crim );
+                }
+
+                else if (discriminant == 0 ) {
+                    alert (" The x1 and X2 of the Quadratic Equations are " + disc);
+                }
+
+                else {
+                    alert (" The x1 and X2 of the Quadratic Equations are imaginary");
+                }
+               document.getElementById("result").innerHTML = solve();
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Anagram_QQ3_AA1</title>
+    </head>
+    <body>
+        
+    <script>
+        let user1 = prompt("Enter the first word: ");
+        let user2 = prompt("Enter the second word: ");
+
+        function anagram(user, user2) {
+        let random1 = user1.replace(/[^a-zA-Z]/g,'').toLowerCase();
+        let random2 = user2.replace(/[^a-zA-Z]/g,'').toLowerCase();
+
+        let sorting1 = random1.split('').sort().join('');
+        let sorting2 = random2.split('').sort().join('');
+
+        if (sorting1 === sorting2) {
+            return true;
+        }else {
+            return false;
+        }
+        }               
+        if (anagram(user2, user2)) {
+            alert("The two words are an anagram");
+        }else{
+            alert("The two words are not an anagram");
+        }
+    </script>
+    </body>
+</html>
