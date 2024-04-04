@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Multiplication Table</title>
+        <style>
+            table {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }    
+            td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <p id = "generator"></p>
+        <script>
+            var n = prompt("Enter number of rows: ");
+            while (n < 2 || n > 10 || isNaN(n)){
+                alert(" invalid number, try again ");
+                var n = prompt("Enter number of rows: ");
+        }
+            var m = prompt("Enter number of columns: ");
+            while (m < 2 || m > 10 || isNaN(m)){
+                alert(" invalid number, try again ");
+                var n = prompt("Enter number of rows: ");
+        }
+            var table = "<table>";
+            for (k = 1; k <= n; k++) {
+                table += "<tr>";
+            for (a = 1; a <= m; a++) {
+                table += "<td>" + k * a + "</td>";
+        }
+            table += "</tr>";
+        }
+            table += "</table>";
+
+            document.getElementById("generator").innerHTML = table;
+        </script>
+    </body>
+</html>
