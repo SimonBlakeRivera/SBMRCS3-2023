@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rivera AA2</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    .container {
+        max-width: 400px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input[type="text"], input[type="email"], input[type="password"], select, textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-top: 5px;
+    }
+    select {
+        height: 40px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: blue;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: darkblue;
+    }
+    .indicator {
+        color: red;
+        font-size: 12px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h2>SIGN UP</h2>
+
+<div id="form-container" class="modal">
+    <div id="form" class="modal-content">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" onblur="checkEmpty(this)" onfocus="removeIndicator(this)">
+            <span class="indicator" id="name-indicator"></span>
+        </div>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" onblur="checkEmpty(this)" onfocus="removeIndicator(this)">
+            <span class="indicator" id="username-indicator"></span>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" onblur="checkEmpty(this)" onfocus="removeIndicator(this)">
+            <span class="indicator" id="email-indicator"></span>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" onblur="checkEmpty(this)" onfocus="removeIndicator(this)">
+            <span class="indicator" id="password-indicator"></span>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" onblur="checkEmpty(this)" onfocus="removeIndicator(this)">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Prefer Not To Say</option>
+            </select>
+            <span class="indicator" id="gender-indicator"></span>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" onblur="checkEmpty(this)" onfocus="removeIndicator(this)">
+            <span class="indicator" id="address-indicator"></span>
+        </div>
+        <div class="form-group">
+            <label for="interests">Interests:</label>
+            <textarea id="interests" name="interests" rows="4" cols="50" onblur="checkEmpty(this)" onfocus="removeIndicator(this)"></textarea>
+            <span class="indicator" id="interests-indicator"></span>
+        </div>
+        <button onclick="submitForm()">Sign Up</button>
+    </div>
+</div>
+
+<div id="output"></div>
+
+<script>
+    function submitForm() {
+ 
+        var name = document.getElementById("name").value;
+        var username = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var gender = document.getElementById("gender").value;
+        var address = document.getElementById("address").value;
+        var interests = document.getElementById("interests").value;
+
+ 
+        if (name === "") {
+            alert("Please enter your name.");
+        } else if (username === "") {
+            alert("Please enter your username.");
+        } else if (email === "") {
+            alert("Please enter your email.");
+        } else if (password === "") {
+            alert("Please enter your password.");
+        } else if (gender === "") {
+            alert("Please select your gender.");
+        } else if (address === "") {
+            alert("Please enter your address.");
+        } else if (interests === "") {
+            alert("Please enter your interests.");
+        } else {
+  
+            var userData = {
+                name: name,
+                username: username,
+                email: email,
+                password: password,
+                gender: gender,
+                address: address,
+                interests: interests
+            };
+
+            console.log(userData);
+
+            var output = "<h2>Sign up Details:</h2>";
+            output += "<p><strong>Name:</strong> " + name + "</p>";
+            output += "<p><strong>Username:</strong> " + username + "</p>";
+            output += "<p><strong>Email:</strong> " + email + "</p>";
+            output += "<p><strong>Password:</strong> " + "*".repeat(password.length) + "</p>";
+            output += "<p><strong>Gender:</strong> " + gender + "</p>";
+            output += "<p><strong>Address:</strong> " + address + "</p>";
+            output += "<p><strong>Interests:</strong> " + interests + "</p>";
+
+            document.getElementById("output").innerHTML = output;
+        }
+    }
+
+    function checkEmpty(element) {
+        var indicatorId = element.id + "-indicator";
+        if (element.value === "") {
+            document.getElementById(indicatorId).textContent = "This field cannot be empty";
+        }
+    }
+
+    function removeIndicator(element) {
+        var indicatorId = element.id + "-indicator";
+        document.getElementById(indicatorId).textContent = "";
+    }
+</script>
+
+
+</div>
+
+</body>
+</html>
